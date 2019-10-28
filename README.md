@@ -392,6 +392,7 @@ You successfully completed the lab!! If you want, you can continue with the opti
 <br>
 <br>
 <br>
+
 ### [Optional] Create a new function via the Cloud Functions dashboard
 
 To explore the possibilities when creating cloud functions via the UI, click the **Create** button. On the next page, you can either create new triggers and/or sequences, but also new functions via quick templates or from scratch. Select the **Quickstart Templates** to continue and choose Hello World. You should see a screen similar to:
