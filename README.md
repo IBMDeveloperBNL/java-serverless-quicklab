@@ -19,7 +19,7 @@ You will need the following to complete this workshop:
 	
 ## 0. Setup
 
-1. <a href="https://ibm.biz/BdzhjJ"  target="_blank">Create an IBM Cloud Account</a>
+1. <a href="https://ibm.biz/Bd2kJn"  target="_blank">Create an IBM Cloud Account</a>
 2. Open terminal
 3. Login into IBM Cloud CLI:
 
@@ -385,9 +385,13 @@ These functions have been created via the CLI at the start of this lab. They hav
 	
 	Finally, return to the functions dashboard. 
 
+**CONGRATULATIONS!!** :smiley: :+1: 
+
+You successfully completed the lab!! If you want, you can continue with the optional step below.
+
 ### Create a new function via the Cloud Functions dashboard (OPTIONAL)
 
-If you want to explore what the possibilities are when creating cloud functions via the UI, click the **Create** button. In the next page, you can either create new triggers and/or sequences, but also new functions via quick templates or from scratch. Select the **Quickstart Templates** to continue and choose Hello World. You should see a screen similar to 
+To explore the possibilities when creating cloud functions via the UI, click the **Create** button. On the next page, you can either create new triggers and/or sequences, but also new functions via quick templates or from scratch. Select the **Quickstart Templates** to continue and choose Hello World. You should see a screen similar to:
 
 ![](./images/dashboard-3.png)
 
@@ -402,14 +406,9 @@ Now select a favourite language using the dropdown (1). We've chosen for NodeJS 
 
 When there is input, the result is the same as for the `helloJava` function. Please see for yourself by invoking the `hello-world` function with some input as well.
 
-<br>
-<br>
-
-**CONGRATULATIONS!!** :smiley: :+1: 
-
-You successfully completed the lab!! 
+## 7. Continue Learning
 
 We only scratched the surface of all that is possible with serverless functions. Want to learn how to chain the execution of functions together? Or how to configure a trigger to have a function executed?
 
-Then check out the following repo: [https://github.com/prpatel/serverless-java-mini-workshop](https://github.com/prpatel/serverless-java-mini-workshop)
+Then check out the following repo: [https://github.com/eciggaar/go-serverless-with-java](https://github.com/eciggaar/go-serverless-with-java)
 
