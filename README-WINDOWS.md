@@ -9,15 +9,15 @@ In this quicklab we will look at how to write Serverless Functions in Java and r
   <summary>Click to expand</summary>
 Below are the requirements for running this quicklab:
   
-1. Install Java 8+
+1. [Install Java 8+](https://adoptopenjdk.net/)
 2. [Install IBM Cloud CLI](https://github.com/IBM-Cloud/ibm-cloud-cli-release/releases/)
 3. Install IBM Cloud Functions Plugin
 
 	```
 	ibmcloud plugin install cloud-functions
 	```
-4. Install git
-5. Install cygwin
+4. [Install git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
+5. [Install cygwin](https://cygwin.com/install.html)
 
 </details>
 
