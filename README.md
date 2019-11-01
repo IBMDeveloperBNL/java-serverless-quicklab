@@ -269,7 +269,7 @@ Functions can be setup so they can be called directly over http as well. Let's t
 	https://[region].functions.cloud.ibm.com/api/v1/web/SAMPLE_URL/default/helloJava
 	```
 
-3.	Because this command is return JSON, we will need to append the end of the url with `.json` when calling it:
+3.	Because this command returns JSON, we will need to append the end of the url with `.json` when calling it:
 
 	```
 	curl -i https://[region].functions.cloud.ibm.com/api/v1/web/SAMPLE_URL/default/helloJava.json
@@ -358,7 +358,7 @@ So far we have been just return JSON from our function, but functions are more f
 
 6. Like earlier, you can change the `name` query parameter to change the value being returned.
 
-## 7. Viewing the Functions Dashboard
+## 6. Viewing the Functions Dashboard
 
 IBM Cloud provides a convenient dashboard for viewing your functions. You can access this dashboard here: [https://cloud.ibm.com/functions/actions](https://cloud.ibm.com/functions/actions). It should list the following functions:
 
@@ -368,7 +368,7 @@ These functions have been created via the CLI at the start of this lab. They hav
 
 1. The serverless functions `helloJava` and `webHello` are both written in Java. Hence, the code cannot be viewed and changed via the dashboard. They can be invoked though.
 
-	Invoke the function `helloJava` by clicking the function and then click **Invoke**.
+	Invoke the function `helloJava` by clicking the function. Next, click **Invoke**.
 
 	![](./images/dashboard-2.png)
 
@@ -382,7 +382,7 @@ These functions have been created via the CLI at the start of this lab. They hav
 	}
 	```
 
-	Change the value of `name` to your own name, or something you like and click **Apply**. Click **Invoke** to invoke this function with the changed input. The result should be:
+	Change the value of `name` to your own name, or something you like, and click **Apply**. Click **Invoke** to invoke this function with the changed input. The result should be:
 
 	```json
 	{
