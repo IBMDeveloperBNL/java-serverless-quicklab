@@ -66,7 +66,7 @@ You will need the following to complete this workshop:
 
 	This command verifies that IBM Cloud CLI is configured correctly . If this does not work, please contact the workshop organiser to provide assistance!
 
-# 2. Build and Deploy your First Serverless Java Function
+## 2. Build and Deploy your First Serverless Java Function
 
 Let's build and deploy our own Java serverless function.
 
@@ -75,11 +75,13 @@ Let's build and deploy our own Java serverless function.
 	```
 	./mvnw package
 	```
+
 2. Deploy the function to IBM Cloud:
 
 	```
 	ibmcloud fn action create helloJava target/hello-world-java.jar --main com.example.FunctionApp
 	```
+
 3. Execute the function:
 
 	```
@@ -122,6 +124,7 @@ So far we have been executing functions synchronously with the `--result` tag. L
     ```
     ibmcloud fn activation result [id]
     ```
+   
     You should get a response that looks something like this:
 
     ```json
@@ -201,7 +204,6 @@ When invoking a function OpenWhisk is generating diagnostic information that can
 	}
 	```
 
-
 ### Viewing Function Invocation Logs
 
 `ibmcloud fn activation get` returns the logs from an invocation, but you can also just view the logs from invocation to make debugging a bit easier.
@@ -217,6 +219,7 @@ When invoking a function OpenWhisk is generating diagnostic information that can
 	2019-09-09T21:16:27.917303Z    stderr: Sep 09, 2019 9:16:27 PM com.example.FunctionApp main
 	2019-09-09T21:16:27.917347Z    stderr: INFO: invoked with params:
 	```
+
 2. For longer running functions, you can tail the logs a function is producing with the following command:
 
 	```
@@ -280,6 +283,7 @@ Functions can be setup so they can be called directly over http as well. Let's t
 	```
 	curl -i https://[region].functions.cloud.ibm.com/api/v1/web/SAMPLE_URL/default/helloJava.json?name=World
 	```
+
 ## 5. Using Functions to Return HTML
 
 So far we have been just return JSON from our function, but functions are more flexible than that! Let's setup a function to return HTML:
@@ -289,11 +293,13 @@ So far we have been just return JSON from our function, but functions are more f
 	```
 	cd src/main/java/com/example
 	```
+
 2. Create and open a new Java file `WebHello.java` with this command:
 
 	```
 	vi WebHello.java
 	```
+
 3. Copy in the body of the Java file:
 
 	```java
@@ -336,6 +342,7 @@ So far we have been just return JSON from our function, but functions are more f
 	```
 	cd ../../../../..
 	```
+
 6. Rebuild the Java .jar:
 
 	```
@@ -347,7 +354,7 @@ So far we have been just return JSON from our function, but functions are more f
 	```
 	ibmcloud fn action create webHello target/hello-world-java.jar --main com.example.WebHello --web true
 	```
-
+	
 4. Get the url for the function with the following command like earlier:
 
 	```
