@@ -57,7 +57,7 @@ Below are the requirements for running this quicklab:
    
    You should get back a result that looks like this:
    
-   ```
+   ```json
    {
        "message": "hello"
    }
@@ -74,11 +74,13 @@ Let's build and deploy our own Java serverless function.
 	```
 	./mvnw.cmd package
 	``` 
+
 2. Deploy the function to IBM Cloud:
 
 	```
 	ibmcloud wsk action create helloJava target/hello-world-java.jar --main com.example.FunctionApp
 	```
+
 3. Execute the function:
 
 	```
@@ -87,7 +89,7 @@ Let's build and deploy our own Java serverless function.
 	
 	You should see:
 	
-	```
+	```json
 	{
 	    "greetings": "Hello World"
 	}
@@ -121,9 +123,10 @@ So far we have been executing functions synchronously with the `--result` tag. L
     ```
     ibmcloud wsk activation result [id]
     ```
+  
     You should get a response that looks something like this:
     
-    ```
+    ```json
 	{
 	    "greetings": "Hello World"
 	}
@@ -143,7 +146,7 @@ When invoking a function OpenWhisk is generating diagnostic information that can
 	
 	You should get a response back that looks something like this:
 	
-	```
+	```json
 	{
 	    "namespace": "[youremail]@mail.com_dev",
 	    "name": "helloJava",
@@ -268,7 +271,7 @@ Functions can be setup so they can be called directly over http as well. Let's t
 	https://us-south.functions.cloud.ibm.com/api/v1/web/SAMPLE_URL/default/helloJava
 	```
 	
-3.	Because this command is return JSON, we will need to append the end of the url with `.json` when calling it: 
+3.	Because this command returns JSON, we will need to append the end of the url with `.json` when calling it: 
 
 	```
 	curl -i https://us-south.functions.cloud.ibm.com/api/v1/web/SAMPLE_URL/default/helloJava.json
@@ -290,14 +293,16 @@ So far we have been just return JSON from our function, but functions are more f
 	```
 	cd src/main/java/com/example
 	```
+
 2. Create and open a new Java file `WebHello.java` with this command:
 
 	```
 	vi WebHello.java
 	```
+
 3. Copy in the body of the Java file:
 
-	```
+	```java
 	package com.example;
 
 	import com.google.gson.JsonObject;
