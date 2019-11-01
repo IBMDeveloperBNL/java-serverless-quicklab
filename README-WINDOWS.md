@@ -24,7 +24,7 @@ Below are the requirements for running this quicklab:
 
 ## 0. Setup
 
-1. <a href="https://ibm.biz/springonelab"  target="_blank">Create an IBM Cloud Account</a>
+1. <a href="https://ibm.biz/Bd2kJn"  target="_blank">Create an IBM Cloud Account</a>
 2. Open terminal
 3. Login into IBM Cloud CLI: 
 

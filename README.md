@@ -26,7 +26,7 @@ You will need the following to complete this workshop:
 
 ## 0. Setup
 
-1. <a href="https://ibm.biz/springonelab"  target="_blank">Create an IBM Cloud Account</a>
+1. <a href="https://ibm.biz/Bd2kJn"  target="_blank">Create an IBM Cloud Account</a>
 2. Open terminal
 3. Login into IBM Cloud CLI:
 
@@ -354,7 +354,7 @@ So far we have been just return JSON from our function, but functions are more f
 	```
 	ibmcloud fn action create webHello target/hello-world-java.jar --main com.example.WebHello --web true
 	```
-	
+
 4. Get the url for the function with the following command like earlier:
 
 	```
