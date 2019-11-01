@@ -4,3 +4,4 @@ dependency-reduced-pom.xml
 **/.settings
 .project
 .classpath
+src/main/java/com/example/WebHello.java
