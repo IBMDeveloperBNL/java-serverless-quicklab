@@ -397,7 +397,6 @@ You successfully completed the lab!! If you want, you can continue with the opti
 
 <br>
 <br>
-<br>
 
 ## [Optional] Create a new function via the Cloud Functions dashboard
 
