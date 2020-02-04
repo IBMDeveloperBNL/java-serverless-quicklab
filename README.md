@@ -394,7 +394,7 @@ These functions have been created via the CLI at the start of this lab. Optional
 **CONGRATULATIONS!!** :smiley: :+1:
 
 You successfully completed the lab!! If you want, you can continue with the optional step below.
-
+<br>
 
 ## [Optional] Create a new function via the Cloud Functions dashboard
 
