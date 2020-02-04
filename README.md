@@ -363,7 +363,7 @@ IBM Cloud provides a convenient dashboard for viewing your functions. You can ac
 
 ![](./images/dashboard-1.png)
 
-These functions have been created via the CLI at the start of this lab. They have in the previous section been updated via the delivery pipeline. Optionally you could also define an API that can be further explored in the API section of the dashboard. We'll dive further into this topic in the API Gateway section of this lab.
+These functions have been created via the CLI at the start of this lab. Optionally, you could also define an API that can be further explored in the API section of the dashboard. Check out our deep-dive repo -- listed at the bottom of this lab -- if you want to know more about this topic.
 
 1. The serverless functions `helloJava` and `webHello` are both written in Java. Hence, the code cannot be viewed and changed via the dashboard. They can be invoked though.
 
@@ -416,7 +416,7 @@ Now select a favourite language using the dropdown (1). We've chosen for NodeJS 
 
 When there is input, the result is the same as for the `helloJava` function. Please see for yourself by invoking the `hello-world` function with some input as well.
 
-## 7. Continue Learning
+## Continue Learning
 
 We only scratched the surface of all that is possible with serverless functions. Want to learn how to chain the execution of functions together? Or how to configure a trigger to have a function executed?
 
