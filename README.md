@@ -1,6 +1,6 @@
 # Java Serverless QuickLab
 
-Serverless functions are a technology for decomposing business operations into very fine grain chunks of code. Functions provide advantages to an organization by increasing agility and cost savings by allowing "scale to zero" when a function is no longer actively being used.
+Serverless functions enables you to decompose business operations into very fine grain chunks of code. Functions provide advantages to an organization by increasing agility and cost savings by allowing "scale to zero" when a function is no longer actively being used.
 
 In this quicklab we will look at how to write Serverless Functions in Java and run them on [Apache Openwhisk](https://openwhisk.apache.org/) hosted on IBM Cloud.
 
