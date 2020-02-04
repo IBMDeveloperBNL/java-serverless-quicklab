@@ -1,55 +1,47 @@
 # Java Serverless QuickLab
 
-Serverless functions are an emerging technology for decomposing business operations into very fine grain chunks of code. Functions provide advantages to organization by increasing agility and cost savings by allowing "scale to zero" when a function is no longer being actively used.
+Serverless functions are a technology for decomposing business operations into very fine grain chunks of code. Functions provide advantages to an organization by increasing agility and cost savings by allowing "scale to zero" when a function is no longer actively being used.
 
 In this quicklab we will look at how to write Serverless Functions in Java and run them on [Apache Openwhisk](https://openwhisk.apache.org/) hosted on IBM Cloud.
 
-If you are running this lab on a Windows machine, use these [instructions](README-WINDOWS.md).
-
-## Prerequisites:
-<details>
-  <summary>Click to expand</summary>
-Here are the steps for configuring a Mac machine for this quicklab
-
-1. Install Java 8+
-
-You will need the following to complete this workshop:
-
-1. [Java 8+](https://adoptopenjdk.net/)
-2. [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
-3. [IBM Cloud CLI](https://github.com/IBM-Cloud/ibm-cloud-cli-release/releases/)
-4. Install IBM Cloud Functions Plugin
-
-	```
-	ibmcloud plugin install cloud-functions
-	```
-
 ## 0. Setup
+1. Go to this link and create an IBM Cloud Account: https://ibm.biz/BdqRFh.
 
-1. <a href="https://ibm.biz/Bd2kJn"  target="_blank">Create an IBM Cloud Account</a>
-2. Open terminal
-3. Login into IBM Cloud CLI:
+2. If you already have an account, go to the same [link](https://ibm.biz/BdqRFh) and click **Log in** on the top right of the page to continue.
+
+3. Once logged in, click the IBM Cloud Shell icon (1).
+
+	![](./images/cloud-shell.png)
+
+	and wait until the session is ready to use.
+
+4. The default region for the cloud shell is `us-south`. Europe based Lite Account users have `eu-gb` as their region. If necessary switch region by typing:
 
 	```
-	ibmcloud login
+	ibmcloud target -r <your_region>
 	```
-4. Configure the CLI:
+
+	where `<your_region>` is the value of the region your switching to.  
+
+5. Next, complete the IBM Cloud CLI configuration by typing:
 
 	```
 	ibmcloud target --cf
 	```
-4. Clone repo:
+
+6. Make sure you select the IBM Cloud Shell tab. On the command line clone the repo by typing:
 
 	```
 	git clone https://github.com/IBMDeveloperBNL/java-serverless-quicklab
 	```
-5. Change directory to cloned repo:
+
+7. Change directory to the cloned repo:
 
 	```
 	cd java-serverless-quicklab
 	``` 	
-## 1. Executing a Serverless Function with the IBM Cloud CLI
 
+## 1. Executing a Serverless Function with the IBM Cloud CLI
 1. Run the following command to invoke a test function from the command-line:
 
    ```
