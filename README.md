@@ -391,13 +391,7 @@ These functions have been created via the CLI at the start of this lab. Optional
 
 	Finally, return to the functions dashboard.
 
-**CONGRATULATIONS!!** :smiley: :+1:
-
-You successfully completed the lab!! If you want, you can continue with the optional step below.
-<br>
-<br>
-
-## [Optional] Create a Java Serverless Function using Quarkus
+## Speed up your Java Serverless Function with Quarkus
 
 Use the command below to obtain a list of the most recent activations of your serverless functions.
 
@@ -419,7 +413,7 @@ The result should look similar to:
 
 Check out the cold starts of your Java functions in this list. As you can see, they can take a relatively long time to complete.
 
-### Quarkus to the rescue :smiley:
+### Quarkus to the rescue
 
 Quarkus is a Kubernetes Native Java Framework developed by Red Hat that -- in short -- allows you to run your Java application as a native binary via GraalVM. By developing your application using Quarkus, one should benefit from faster startup times, lower memory utilization and a smaller container image footprint. This is all very welcome when running your application in the cloud, where typically you pay for memory consumption and where serverless frameworks and features like auto-scaling require instant startup-times. If you want to learn more about Quarkus, please check out https://quarkus.io/. For now, let's see how we can benefit by using Quarkus for our sample serverless function.
 
@@ -452,6 +446,12 @@ ibmcloud fn activation list
 Take a look at the startup times for the cold starts of both the `helloQuarkus` and `helloJava` action and notice the difference....
 
 If you want to further experiment with building your Java action using Quarkus, then check out this excellent blog on [Serverless Java Functions with Quarkus and OpenWhisk](http://heidloff.net/article/serverless-java-quarkus-openwhisk)
+
+**CONGRATULATIONS!!** :smiley: :+1:
+
+You successfully completed the lab!! If you want, you can continue with the optional step below.
+<br>
+<br>
 
 
 ## [Optional] Create a new function via the Cloud Functions dashboard
