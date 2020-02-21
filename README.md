@@ -391,7 +391,7 @@ These functions have been created via the CLI at the start of this lab. Optional
 
 	Finally, return to the functions dashboard.
 
-## Speed up your Java Serverless Function with Quarkus
+## 7. Speed up your Java Serverless Function with Quarkus
 
 Use the command below to obtain a list of the most recent activations of your serverless functions.
 
@@ -443,9 +443,25 @@ and finally retrieve the list of activations again to see the results.
 ibmcloud fn activation list
 ```
 
-Take a look at the startup times for the cold starts of both the `helloQuarkus` and `helloJava` action and notice the difference....
+resulting in output similar to 
 
-If you want to further experiment with building your Java action using Quarkus, then check out this excellent blog on [Serverless Java Functions with Quarkus and OpenWhisk](http://heidloff.net/article/serverless-java-quarkus-openwhisk)
+```
+2020-02-21 15:38:20 f957190838b4449897190838b4d498de java:8    warm  4ms        success liteuser26...com_dev/helloJava:0.0.2
+2020-02-21 15:38:15 5749165b40bb4fbf89165b40bb2fbfe2 java:8    cold  390ms      success liteuser26...com_dev/helloJava:0.0.2
+2020-02-21 15:37:54 2ddf66c02f92422e9f66c02f92d22e8a blackbox  warm  2ms        success liteuser26...com_dev/helloQuarkus:0.0.1
+2020-02-21 15:37:50 39e19e4562b54f05a19e4562b5cf0547 blackbox  warm  1ms        success liteuser26...com_dev/helloQuarkus:0.0.1
+2020-02-21 15:37:47 f52a9895478b4a58aa9895478bea58d9 blackbox  warm  2ms        success liteuser26...com_dev/helloQuarkus:0.0.1
+2020-02-21 15:37:41 8bee8d2f043a46a6ae8d2f043a26a658 blackbox  cold  57ms       success liteuser26...com_dev/helloQuarkus:0.0.1
+2020-02-21 15:30:10 0ecf9233e3b244138f9233e3b22413f2 java:8    warm  4ms        success liteuser26...com_dev/webHello:0.0.1
+2020-02-21 15:30:01 c5fda43e58034719bda43e580367190f java:8    cold  346ms      success liteuser26...com_dev/webHello:0.0.1
+2020-02-21 15:27:15 2934cb8f6e0744f9b4cb8f6e07a4f9e9 java:8    cold  385ms      success liteuser26...com_dev/helloJava:0.0.2
+2020-02-21 15:23:09 7e377b65c51041e3b77b65c510f1e347 java:8    warm  4ms        success liteuser26...com_dev/helloJava:0.0.1
+2020-02-21 15:22:51 3123592756e640fca3592756e640fc9f java:8    cold  341ms      success liteuser26...com_dev/helloJava:0.0.1
+```
+
+Take a look at the startup times for the cold starts of both the `helloQuarkus` and `helloJava` action (you might have to scroll a bit to the right) and notice the difference...
+
+If you want to experiment yourself with developing Java functions using Quarkus, then check out this excellent blog on [Serverless Java Functions with Quarkus and OpenWhisk](http://heidloff.net/article/serverless-java-quarkus-openwhisk)
 
 **CONGRATULATIONS!!** :smiley: :+1:
 
