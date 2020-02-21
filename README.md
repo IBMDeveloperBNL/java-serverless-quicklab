@@ -419,6 +419,8 @@ Quarkus is a Kubernetes Native Java Framework developed by Red Hat that -- in sh
 
 To run a Java function on OpenWhisk that is built using Quarkus, we need to create a so-called custom runtime image. This image needs to implement the Action interface. See [Creating and invoking Docker actions](https://github.com/apache/openwhisk/blob/master/docs/actions-docker.md) for more info on the how to . 
 
+
+
 1. For this lab, the image has already been prepared for you. So let's create a new function that uses our custom Quarkus runtime image.
 
 	```
