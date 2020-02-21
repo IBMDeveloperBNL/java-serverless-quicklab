@@ -58,7 +58,7 @@ In this quicklab we will look at how to write Serverless Functions in Java and r
 
 	This command verifies that IBM Cloud CLI is configured correctly . If this does not work, please contact the workshop organiser to provide assistance!
 
-## 2. Build and Deploy your First Serverless Java Function
+## 2. Build and Deploy your First Java Serverless Function
 
 Let's build and deploy our own Java serverless function.
 
@@ -396,6 +396,63 @@ These functions have been created via the CLI at the start of this lab. Optional
 You successfully completed the lab!! If you want, you can continue with the optional step below.
 <br>
 <br>
+
+## [Optional] Create a Java Serverless Function using Quarkus
+
+Use the command below to obtain a list of the most recent activations of your serverless functions.
+
+```
+ibmcloud fn activation list
+```
+
+The result should look similar to:
+
+```
+2020-02-20 18:31:14 f0d75478ceb04d59975478ceb09d5955 java     warm  3ms        success liteuser26...com_dev/helloJava:0.0.1
+2020-02-20 18:31:13 c7af1e30b05544e0af1e30b05554e03c java     warm  3ms        success liteuser26...com_dev/helloJava:0.0.1
+2020-02-20 18:31:12 ad2bda604b864a46abda604b866a46e3 java     warm  4ms        success liteuser26...com_dev/helloJava:0.0.1
+2020-02-20 18:31:11 684e47788c8a4ad18e47788c8a7ad1b9 java     warm  4ms        success liteuser26...com_dev/helloJava:0.0.1
+2020-02-20 18:31:10 1ad9cac8e75745ac99cac8e75755ac9e java     warm  4ms        success liteuser26...com_dev/helloJava:0.0.1
+2020-02-20 18:31:08 0472cee4cbcc49d5b2cee4cbcc79d50f java     warm  4ms        success liteuser26...com_dev/helloJava:0.0.1
+2020-02-20 18:30:41 129d3dc7c8b844b19d3dc7c8b8b4b1ea java     cold  425ms      success liteuser26...com_dev/helloJava:0.0.1
+```
+
+Check out the cold starts of your Java functions in this list. As you can see, they can take a relatively long time to complete.
+
+### Quarkus to the rescue :smiley:
+
+Quarkus is a Kubernetes Native Java Framework developed by Red Hat that -- in short -- allows you to run your Java application as a native binary via GraalVM. By developing your application using Quarkus, one should benefit from faster startup times, lower memory utilization and a smaller container image footprint. This is all very welcome when running your application in the cloud, where typically you pay for memory consumption and where serverless frameworks and features like auto-scaling require instant startup-times. If you want to learn more about Quarkus, please check out https://quarkus.io/. For now, let's see how we can benefit by using Quarkus for our sample serverless function.
+
+To run a Java function on OpenWhisk that is built using Quarkus, we need to create a so-called custom runtime image. This image needs to implement the Action interface. See [Creating and invoking Docker actions](https://github.com/apache/openwhisk/blob/master/docs/actions-docker.md) for more info on the how to . 
+
+For this lab, the image has already been prepared for you. So let's create a new function that uses our custom Quarkus runtime image.
+
+```
+ibmcloud fn action create helloQuarkus --docker eciggaar/action-quarkus:v1.2.1 -m 128
+```
+
+Note that the action is created with only 128M as maximum memory limit!! Next, invoke the action a couple of times to generate some activity. You might wanna replace the value of the `name` parameter with your own...
+
+```
+ibmcloud fn action invoke helloQuarkus --result --param name Edward
+```
+
+Now do the same for the regular Java action.
+
+```
+ibmcloud fn action invoke helloJava --result --param name Edward
+```
+
+and finally retrieve the list of activations again to see the results.
+
+```
+ibmcloud fn activation list
+```
+
+Take a look at the startup times for the cold starts of both the `helloQuarkus` and `helloJava` action and notice the difference....
+
+If you want to further experiment with building your Java action using Quarkus, then check out this excellent blog on [Serverless Java Functions with Quarkus and OpenWhisk](http://heidloff.net/article/serverless-java-quarkus-openwhisk)
+
 
 ## [Optional] Create a new function via the Cloud Functions dashboard
 
