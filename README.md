@@ -473,7 +473,7 @@ To run a Java function on OpenWhisk that is built using Quarkus, we need to crea
 
 **CONGRATULATIONS!!** :smiley: :+1:
 
-You successfully completed the lab!! If you want, you can continue with the optional step below.
+You successfully completed the lab!! If you want, you can continue with the optional steps below.
 <br>
 <br>
 
