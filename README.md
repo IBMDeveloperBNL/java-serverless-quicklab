@@ -393,25 +393,25 @@ These functions have been created via the CLI at the start of this lab. Optional
 
 ## 7. Speed up your Java Serverless Function with Quarkus
 
-Use the command below to obtain a list of the most recent activations of your serverless functions.
+1. Use the command below to obtain a list of the most recent activations of your serverless functions.
 
-```
-ibmcloud fn activation list
-```
+	```
+	ibmcloud fn activation list
+	```
 
-The result should look similar to:
+	The result should look similar to:
 
-```
-2020-02-20 18:31:14 f0d75478ceb04d59975478ceb09d5955 java     warm  3ms        success liteuser26...com_dev/helloJava:0.0.1
-2020-02-20 18:31:13 c7af1e30b05544e0af1e30b05554e03c java     warm  3ms        success liteuser26...com_dev/helloJava:0.0.1
-2020-02-20 18:31:12 ad2bda604b864a46abda604b866a46e3 java     warm  4ms        success liteuser26...com_dev/helloJava:0.0.1
-2020-02-20 18:31:11 684e47788c8a4ad18e47788c8a7ad1b9 java     warm  4ms        success liteuser26...com_dev/helloJava:0.0.1
-2020-02-20 18:31:10 1ad9cac8e75745ac99cac8e75755ac9e java     warm  4ms        success liteuser26...com_dev/helloJava:0.0.1
-2020-02-20 18:31:08 0472cee4cbcc49d5b2cee4cbcc79d50f java     warm  4ms        success liteuser26...com_dev/helloJava:0.0.1
-2020-02-20 18:30:41 129d3dc7c8b844b19d3dc7c8b8b4b1ea java     cold  425ms      success liteuser26...com_dev/helloJava:0.0.1
-```
+	```
+	2020-02-20 18:31:14 f0d75478ceb04d59975478ceb09d5955 java     warm  3ms        success liteuser26...com_dev/helloJava:0.0.1
+	2020-02-20 18:31:13 c7af1e30b05544e0af1e30b05554e03c java     warm  3ms        success liteuser26...com_dev/helloJava:0.0.1
+	2020-02-20 18:31:12 ad2bda604b864a46abda604b866a46e3 java     warm  4ms        success liteuser26...com_dev/helloJava:0.0.1
+	2020-02-20 18:31:11 684e47788c8a4ad18e47788c8a7ad1b9 java     warm  4ms        success liteuser26...com_dev/helloJava:0.0.1
+	2020-02-20 18:31:10 1ad9cac8e75745ac99cac8e75755ac9e java     warm  4ms        success liteuser26...com_dev/helloJava:0.0.1
+	2020-02-20 18:31:08 0472cee4cbcc49d5b2cee4cbcc79d50f java     warm  4ms        success liteuser26...com_dev/helloJava:0.0.1
+	2020-02-20 18:30:41 129d3dc7c8b844b19d3dc7c8b8b4b1ea java     cold  425ms      success liteuser26...com_dev/helloJava:0.0.1
+	```
 
-Check out the cold starts of your Java functions in this list. As you can see, they can take a relatively long time to complete.
+	Check out the cold starts of your Java functions in this list. As you can see, they can take a relatively long time to complete.
 
 ### Quarkus to the rescue
 
@@ -419,47 +419,49 @@ Quarkus is a Kubernetes Native Java Framework developed by Red Hat that -- in sh
 
 To run a Java function on OpenWhisk that is built using Quarkus, we need to create a so-called custom runtime image. This image needs to implement the Action interface. See [Creating and invoking Docker actions](https://github.com/apache/openwhisk/blob/master/docs/actions-docker.md) for more info on the how to . 
 
-For this lab, the image has already been prepared for you. So let's create a new function that uses our custom Quarkus runtime image.
+2. For this lab, the image has already been prepared for you. So let's create a new function that uses our custom Quarkus runtime image.
 
-```
-ibmcloud fn action create helloQuarkus --docker eciggaar/action-quarkus:v1.2.1 -m 128
-```
+	```
+	ibmcloud fn action create helloQuarkus --docker eciggaar/action-quarkus:v1.2.1 -m 128
+	```
 
-Note that the action is created with only 128M as maximum memory limit!! Next, invoke the action a couple of times to generate some activity. You might wanna replace the value of the `name` parameter with your own...
+	Note that the action is created with only 128M as maximum memory limit!! 
 
-```
-ibmcloud fn action invoke helloQuarkus --result --param name Edward
-```
+3. Next, invoke the action a couple of times to generate some activity. You might wanna replace the value of the `name` parameter with your own...
 
-Now do the same for the regular Java action.
+	```
+	ibmcloud fn action invoke helloQuarkus --result --param name Edward
+	```
 
-```
-ibmcloud fn action invoke helloJava --result --param name Edward
-```
+4. Now do the same for the regular Java action.
 
-and finally retrieve the list of activations again to see the results.
+	```
+	ibmcloud fn action invoke helloJava --result --param name Edward
+	```
 
-```
-ibmcloud fn activation list
-```
+5. Finally, retrieve the list of activations again to see the results.
 
-resulting in output similar to 
+	```
+	ibmcloud fn activation list
+	```
 
-```
-2020-02-21 15:38:20 f957190838b4449897190838b4d498de java:8    warm  4ms        success liteuser26...com_dev/helloJava:0.0.2
-2020-02-21 15:38:15 5749165b40bb4fbf89165b40bb2fbfe2 java:8    cold  390ms      success liteuser26...com_dev/helloJava:0.0.2
-2020-02-21 15:37:54 2ddf66c02f92422e9f66c02f92d22e8a blackbox  warm  2ms        success liteuser26...com_dev/helloQuarkus:0.0.1
-2020-02-21 15:37:50 39e19e4562b54f05a19e4562b5cf0547 blackbox  warm  1ms        success liteuser26...com_dev/helloQuarkus:0.0.1
-2020-02-21 15:37:47 f52a9895478b4a58aa9895478bea58d9 blackbox  warm  2ms        success liteuser26...com_dev/helloQuarkus:0.0.1
-2020-02-21 15:37:41 8bee8d2f043a46a6ae8d2f043a26a658 blackbox  cold  57ms       success liteuser26...com_dev/helloQuarkus:0.0.1
-2020-02-21 15:30:10 0ecf9233e3b244138f9233e3b22413f2 java:8    warm  4ms        success liteuser26...com_dev/webHello:0.0.1
-2020-02-21 15:30:01 c5fda43e58034719bda43e580367190f java:8    cold  346ms      success liteuser26...com_dev/webHello:0.0.1
-2020-02-21 15:27:15 2934cb8f6e0744f9b4cb8f6e07a4f9e9 java:8    cold  385ms      success liteuser26...com_dev/helloJava:0.0.2
-2020-02-21 15:23:09 7e377b65c51041e3b77b65c510f1e347 java:8    warm  4ms        success liteuser26...com_dev/helloJava:0.0.1
-2020-02-21 15:22:51 3123592756e640fca3592756e640fc9f java:8    cold  341ms      success liteuser26...com_dev/helloJava:0.0.1
-```
+	resulting in output similar to 
 
-Take a look at the startup times for the cold starts of both the `helloQuarkus` and `helloJava` action (you might have to scroll a bit to the right) and notice the difference...
+	```
+	2020-02-21 15:38:20 f957190838b4449897190838b4d498de java:8    warm  4ms        success liteuser26...com_dev/helloJava:0.0.2
+	2020-02-21 15:38:15 5749165b40bb4fbf89165b40bb2fbfe2 java:8    cold  390ms      success liteuser26...com_dev/helloJava:0.0.2
+	2020-02-21 15:37:54 2ddf66c02f92422e9f66c02f92d22e8a blackbox  warm  2ms        success liteuser26...com_dev/helloQuarkus:0.0.1
+	2020-02-21 15:37:50 39e19e4562b54f05a19e4562b5cf0547 blackbox  warm  1ms        success liteuser26...com_dev/helloQuarkus:0.0.1
+	2020-02-21 15:37:47 f52a9895478b4a58aa9895478bea58d9 blackbox  warm  2ms        success liteuser26...com_dev/helloQuarkus:0.0.1
+	2020-02-21 15:37:41 8bee8d2f043a46a6ae8d2f043a26a658 blackbox  cold  57ms       success liteuser26...com_dev/helloQuarkus:0.0.1
+	2020-02-21 15:30:10 0ecf9233e3b244138f9233e3b22413f2 java:8    warm  4ms        success liteuser26...com_dev/webHello:0.0.1
+	2020-02-21 15:30:01 c5fda43e58034719bda43e580367190f java:8    cold  346ms      success liteuser26...com_dev/webHello:0.0.1
+	2020-02-21 15:27:15 2934cb8f6e0744f9b4cb8f6e07a4f9e9 java:8    cold  385ms      success liteuser26...com_dev/helloJava:0.0.2
+	2020-02-21 15:23:09 7e377b65c51041e3b77b65c510f1e347 java:8    warm  4ms        success liteuser26...com_dev/helloJava:0.0.1
+	2020-02-21 15:22:51 3123592756e640fca3592756e640fc9f java:8    cold  341ms      success liteuser26...com_dev/helloJava:0.0.1
+	```
+
+	Take a look at the startup times for the cold starts of both the `helloQuarkus` and `helloJava` action (you might have to scroll a bit to the right) and notice the difference...
 
 If you want to experiment yourself with developing Java functions using Quarkus, then check out this excellent blog on [Serverless Java Functions with Quarkus and OpenWhisk](http://heidloff.net/article/serverless-java-quarkus-openwhisk)
 
