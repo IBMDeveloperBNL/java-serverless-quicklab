@@ -465,7 +465,13 @@ To run a Java function on OpenWhisk that is built using Quarkus, we need to crea
 
 	Take a look at the startup times for the cold starts of both the `helloQuarkus` and `helloJava` action (you might have to scroll a bit to the right) and notice the difference...
 
+---
+**TIP**
+
 If you want to experiment yourself with developing Java functions using Quarkus, then check out this excellent blog on [Serverless Java Functions with Quarkus and OpenWhisk](http://heidloff.net/article/serverless-java-quarkus-openwhisk)
+
+---
+
 
 **CONGRATULATIONS!!** :smiley: :+1:
 
