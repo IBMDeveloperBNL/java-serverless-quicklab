@@ -424,7 +424,7 @@ To run a Java function on OpenWhisk that is built using Quarkus, we need to crea
 1. For this lab, the image has already been prepared for you. So let's create a new function that uses our custom Quarkus runtime image.
 
 	```
-	ibmcloud fn action create helloQuarkus --docker eciggaar/action-quarkus:v1.2.1 -m 128
+	ibmcloud fn action create helloQuarkus --docker eciggaar/action-quarkus:v1.4.2 -m 128
 	```
 
 	Note that the action is created with only 128M as maximum memory limit!! 
