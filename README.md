@@ -88,8 +88,7 @@ Let's build and deploy our own Java serverless function.
 	}
 	```
 
-	`--result` means just show the results. Omit that, and see what you get back :)
-This also adds the `--blocking` flag, discussed below.
+	`--result` means wait for the call to complete and show the results. Adding `--result` to the call implicitly makes it a blocking call as well. Next, omit that and see what you get back :)
 
 ## 3. Getting Familiar with OpenWhisk Commands
 
@@ -125,7 +124,7 @@ So far we have been executing functions synchronously with the `--result` tag. L
 	}
 	```
 
-	**Note:** Functions execute in asynchronous mode by default, you can also use the tag `--blocking` explicitly invoke a function in asynchronous mode.
+	**Note:** Functions execute in asynchronous mode by default, you can also use the tag `--blocking` to explicitly invoke a function and then wait for it to complete.
 
 ### Viewing Function Invocation Information
 
