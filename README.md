@@ -5,9 +5,9 @@ Serverless functions enables you to decompose business operations into very fine
 In this quicklab we will look at how to write Serverless Functions in Java and run them on [Apache Openwhisk](https://openwhisk.apache.org/) hosted on IBM Cloud.
 
 ## 0. Setup
-1. Go to this link and create an IBM Cloud Account: https://ibm.biz/BdqGFs.
+1. Go to this link and create an IBM Cloud Account: https://ibm.biz/BdqGzb.
 
-2. If you already have an account, go to the same [link](https://ibm.biz/BdqGFs) and click **Log in** on the top right of the page to continue.
+2. If you already have an account, go to the same [link](https://ibm.biz/BdqGzb) and click **Log in** on the top right of the page to continue.
 
 3. Once logged in, open an IBM Cloud Shell by clicking (1)
 
@@ -423,7 +423,7 @@ To run a Java function on OpenWhisk that is built using Quarkus, we need to crea
 1. For this lab, the image has already been prepared for you. So let's create a new function that uses our custom Quarkus runtime image.
 
 	```
-	ibmcloud fn action create helloQuarkus --docker eciggaar/action-quarkus:v1.4.2 -m 128
+	ibmcloud fn action create helloQuarkus --docker eciggaar/action-quarkus:v1.5.2 -m 128
 	```
 
 	Note that the action is created with only 128M as maximum memory limit!! 
