@@ -5,9 +5,9 @@ Serverless functions enables you to decompose business operations into very fine
 In this quicklab we will look at how to write Serverless Functions in Java and run them on [Apache Openwhisk](https://openwhisk.apache.org/) hosted on IBM Cloud.
 
 ## 0. Setup
-1. Go to this link and create an IBM Cloud Account: https://ibm.biz/Bdq79t.
+1. Go to this link and create an IBM Cloud Account: https://ibm.biz/BdfZ9P.
 
-2. If you already have an account, go to the same [link](https://ibm.biz/Bdq79t) and click **Log in** on the top right of the page to continue.
+2. If you already have an account, go to the same [link](https://ibm.biz/BdfZ9P) and click **Log in** on the top right of the page to continue.
 
 3. Once logged in, open an IBM Cloud Shell by clicking (1)
 
