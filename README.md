@@ -17,35 +17,35 @@ In this quicklab we will look at how to write Serverless Functions in Java and r
 
 4. The default region for the shell is `us-south`. Europe based Lite Account users have `eu-gb` as their region. If necessary, switch region by typing:
 
-	```
-	ibmcloud target -r <your_region>
+	```bash
+	$ ibmcloud target -r <your_region>
 	```
 
 	where `<your_region>` is the value of the region your need to switch to. Contact the workshop organiser if you're not sure what your region is.  
 
 5. Next, complete the IBM Cloud CLI configuration by typing:
 
-	```
-	ibmcloud target --cf
+	```bash
+	$ ibmcloud target --cf
 	```
 
 6. Make sure you select the IBM Cloud Shell tab in your browser. On the command line clone the repo by typing:
 
-	```
-	git clone https://github.com/IBMDeveloperBNL/java-serverless-quicklab
+	```bash
+	$ git clone https://github.com/IBMDeveloperBNL/java-serverless-quicklab
 	```
 
 7. Change directory to the cloned repo:
 
-	```
-	cd java-serverless-quicklab
+	```bash
+	$ cd java-serverless-quicklab
 	``` 	
 
 ## 1. Executing a Serverless Function with the IBM Cloud CLI
 1. Run the following command to invoke a test function from the command-line:
 
-   ```
-   ibmcloud fn action invoke whisk.system/utils/echo -p message hello --result
+   ```bash
+   $ ibmcloud fn action invoke whisk.system/utils/echo -p message hello --result
    ```
 
    You should get back a result that looks like this:
@@ -64,20 +64,20 @@ Let's build and deploy our own Java serverless function.
 
 1. Build and jar the Java application:
 
-	```
-	./mvnw package
+	```bash
+	$ ./mvnw package
 	```
 
 2. Deploy the function to IBM Cloud:
 
-	```
-	ibmcloud fn action create helloJava target/hello-world-java.jar --main com.example.FunctionApp
+	```bash
+	$ ibmcloud fn action create helloJava target/hello-world-java.jar --main com.example.FunctionApp
 	```
 
 3. Execute the function:
 
-	```
-	ibmcloud fn action invoke --result helloJava --param name World
+	```bash
+	$ ibmcloud fn action invoke --result helloJava --param name World
 	```
 
 	You should see:
@@ -100,8 +100,8 @@ So far we have been executing functions synchronously with the `--result` tag. L
 
 1. To execute a function in asynchronous mode simply omit `--result` when invoking the function:  
 
-	```
-	ibmcloud fn action invoke helloJava --param name World
+	```bash
+	$ ibmcloud fn action invoke helloJava --param name World
 	```
 
    You should get a response that includes an id you can use to look up the result of the function later:
@@ -112,8 +112,8 @@ So far we have been executing functions synchronously with the `--result` tag. L
 
 2. Use the below command to retrieve the result of the function invocation:
 
-    ```
-    ibmcloud fn activation result [id]
+    ```bash
+    $ ibmcloud fn activation result [id]
     ```
    
     You should get a response that looks something like this:
@@ -132,8 +132,8 @@ When invoking a function OpenWhisk is generating diagnostic information that can
 
 1. You can view the invocation information of the function we executed earlier with this command:
 
-	```
-	ibmcloud fn activation get [id]
+	```bash
+	$ ibmcloud fn activation get [id]
 	```
 
 	You should get a response back that looks something like this:
@@ -201,8 +201,8 @@ When invoking a function OpenWhisk is generating diagnostic information that can
 
 1. To view the logs from an invocation run the following:
 
-	```
-	ibmcloud fn activation logs [id]
+	```bash
+	$ ibmcloud fn activation logs [id]
 	```
 	You should get a return thaty looks like this:
 
@@ -213,32 +213,32 @@ When invoking a function OpenWhisk is generating diagnostic information that can
 
 2. For longer running functions, you can tail the logs a function is producing with the following command:
 
-	```
-	ibmcloud fn activation poll [id]
+	```bash
+	$ ibmcloud fn activation poll [id]
 	```
 
 ### Retrieve Most Recent Function Execution
 
 For shorthand purposes you can use the tag `--last` in-lieu of an id to retrieve information about an activation.
 
-```
-ibmcloud fn activation [get|result|logs] --last
+```bash
+$ ibmcloud fn activation [get|result|logs] --last
 ```
 
 ### Show Recent Function Invocations
 
 You can view recent function invocations; id, function executed with the following:
 
-```
-ibmcloud fn activation list
+```bash
+$ ibmcloud fn activation list
 ```
 
 ### Show Available Functions
 
 You can view a list of all functions available in the current namespace with the following:
 
-```
-ibmcloud fn list
+```bash
+$ ibmcloud fn list
 ```
 
 ## 4. Creating a Web Action
@@ -247,14 +247,14 @@ Functions can be setup so they can be called directly over http as well. Let's t
 
 1. To allow a function to be executed over http run the following command:
 
-	```
-	ibmcloud fn action update helloJava --web true
+	```bash
+	$ ibmcloud fn action update helloJava --web true
 	```
 
 2. To find the url to execute the function run the following:
 
-	```
-	ibmcloud fn action get helloJava --url
+	```bash
+	$ ibmcloud fn action get helloJava --url
 	```
 
 	This command will return with the url to call you function:
@@ -265,14 +265,14 @@ Functions can be setup so they can be called directly over http as well. Let's t
 
 3.	Because this command returns JSON, we will need to append the end of the url with `.json` when calling it:
 
-	```
-	curl -i https://[region].functions.cloud.ibm.com/api/v1/web/SAMPLE_URL/default/helloJava.json
+	```bash
+	$ curl -i https://[region].functions.cloud.ibm.com/api/v1/web/SAMPLE_URL/default/helloJava.json
 	```
 
 4. 	You might have noticed the result was different this time. Previous we have been passing the param name to the function when invoking it through the command line `--param name World`. We can accomplish this same behavior by passing a value as a query param (e.g. `?name=World`):
 
-	```
-	curl -i https://[region].functions.cloud.ibm.com/api/v1/web/SAMPLE_URL/default/helloJava.json?name=World
+	```bash
+	$ curl -i https://[region].functions.cloud.ibm.com/api/v1/web/SAMPLE_URL/default/helloJava.json?name=World
 	```
 
 ## 5. Using Functions to Return HTML
@@ -281,14 +281,14 @@ So far we have been just return JSON from our function, but functions are more f
 
 1. Change the current directory we are in to the root package of our Java app:
 
-	```
-	cd src/main/java/com/example
+	```bash
+	$ cd src/main/java/com/example
 	```
 
 2. Create and open a new Java file `WebHello.java` with this command:
 
-	```
-	vi WebHello.java
+	```bash
+	$ vi WebHello.java
 	```
 
 3. Copy in the body of the Java file:
@@ -330,26 +330,26 @@ So far we have been just return JSON from our function, but functions are more f
 
 5. 	Return to the root of the repo:
 
-	```
-	cd ../../../../..
+	```bash
+	$ cd ../../../../..
 	```
 
 6. Rebuild the Java .jar:
 
-	```
-	./mvnw package
+	```bash
+	$ ./mvnw package
 	```
 
-7. Functions can be updated if you want to change their behavior. To our existing fuinction run the following command:
+7. Functions can be updated if you want to change their behavior. Run the following command to add the new `webHello` action:
 
-	```
-	ibmcloud fn action create webHello target/hello-world-java.jar --main com.example.WebHello --web true
+	```bash
+	$ ibmcloud fn action create webHello target/hello-world-java.jar --main com.example.WebHello --web true
 	```
 
 4. Get the url for the function with the following command like earlier:
 
-	```
-	ibmcloud fn action get webHello --url
+	```bash
+	$ ibmcloud fn action get webHello --url
 	```
 
 5. Invoke the above URL directly from the your web browser.
@@ -394,8 +394,8 @@ These functions have been created via the CLI at the start of this lab. Optional
 
 Use the command below to obtain a list of the most recent activations of your serverless functions.
 
-```
-ibmcloud fn activation list
+```bash
+$ ibmcloud fn activation list
 ```
 
 The result should look similar to:
@@ -422,28 +422,28 @@ To run a Java function on OpenWhisk that is built using Quarkus, we need to crea
 
 1. For this lab, the image has already been prepared for you. So let's create a new function that uses our custom Quarkus runtime image.
 
-	```
-	ibmcloud fn action create helloQuarkus --docker eciggaar/action-quarkus:v1.9.2 -m 128
+	```bash
+	$ ibmcloud fn action create helloQuarkus --docker eciggaar/action-quarkus:v1.9.2 -m 128
 	```
 
 	Note that the action is created with only 128M as maximum memory limit!! 
 
 2. Next, invoke the action a couple of times to generate some activity. You might wanna replace the value of the `name` parameter with your own...
 
-	```
-	ibmcloud fn action invoke helloQuarkus --result --param name Edward
+	```bash
+	$ ibmcloud fn action invoke helloQuarkus --result --param name Quarkus
 	```
 
 3. Now do the same for the regular Java action.
 
-	```
-	ibmcloud fn action invoke helloJava --result --param name Edward
+	```bash
+	$ ibmcloud fn action invoke helloJava --result --param name Quarkus
 	```
 
 4. Finally, retrieve the list of activations again to see the results.
 
-	```
-	ibmcloud fn activation list
+	```bash
+	$ ibmcloud fn activation list
 	```
 
 	resulting in output similar to 
